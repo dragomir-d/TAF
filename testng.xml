@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/CODE/SKILLO/TAF">
+        <classes>
+            <class name="gui.SelniumVanillaLoginTest">
+                <methods>
+                    <include name="verifyBasicNavigationWorks"/>
+                </methods>
+            </class>
+            <class name="gui.e2e.IskiloHappyFlowTest">
+                <methods>
+                    <include name="VerifyUserCanRegisterLoginUpdateProfileAndCretePost"/>
+                </methods>
+            </class>
+            <class name="gui.regression.login.LoginTest">
+                <methods>
+                    <include name="verifyUserCanNavigateToLoginPageViaNavigationLoginButton"/>
+                </methods>
+            </class>
+            <class name="gui.regression.post.DemonstrationTest">
+                <methods>
+                    <include name="verifyUserCanCreateNewPost"/>
+                </methods>
+            </class>
+            <class name="gui.regression.profile.ProfileHappyPathTest">
+                <methods>
+                    <include name="verifyUserCanUpdateProfilePicture"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
