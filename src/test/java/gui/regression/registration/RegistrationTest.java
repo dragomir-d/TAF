@@ -12,7 +12,7 @@ public class RegistrationTest extends TestBase {
     public static final int WAIT = 3333;
 
     @Test
-    public void verifyUserCanRegisterWithValidData(String username, String email, String password) throws InterruptedException {
+    public void verifyUserCanRegisterWithValidData() throws InterruptedException {
 
         HomePage homePage = new HomePage(super.driver, log);
 
@@ -28,12 +28,12 @@ public class RegistrationTest extends TestBase {
         LoginPage loginPage = new LoginPage(super.driver,log);
         loginPage.clickOnRegistrationButton();
 
-
         //Must add new valid data for registration. Email must be under 20 chars.
         log.info("STEP 4: The user provides registration data");
         RegistrationPage registrationPage = new RegistrationPage(super.driver, log);
-        registrationPage.fullRegistrationInputsAndActions(username, email, password);
+        registrationPage.fullRegistrationInputsAndActions("6r4go", "wtf@gmail.com", "123456");
 
+        log.info("STEP 4: Verify the user is successfully logged in after registration");
         Assert.assertTrue(homePage.isLogOutButtonShown(), "The logout button is not shown!");
     }
 }

@@ -12,6 +12,8 @@ import java.time.Duration;
 public class HomePage extends Iskilo {
     public static final String HOME_PAGE_URL = "posts/all";
 
+    @FindBy (xpath = "/html/body/app-root/div[2]/app-all-posts/div/div/div[1]/app-post-detail/div/div[2]/div/div[1]/i[1]")
+    private WebElement likeButtonOfFirstImage;
     @FindBy (id = "nav-link-login")
     private WebElement navigationLoginButton;
     @FindBy (id = "nav-link-new-post")
@@ -22,6 +24,11 @@ public class HomePage extends Iskilo {
 
     @FindBy (id = "#nav-link-profile")
     private WebElement profileLoggedInButton;
+
+    @FindBy (xpath = "//*[@id=\"nav-link-profile\"]")
+    private WebElement goToProfileButton;
+
+
 
     public HomePage (WebDriver driver, Logger log)  {
         super(driver,log);
@@ -55,7 +62,14 @@ public class HomePage extends Iskilo {
             log.error("ERROR ! The navigation logout button was not presented to the user");
             isBUttonShown = false;
         }
-
         return isBUttonShown;
+    }
+
+    public void clickOnProfileButton() {
+        waitAndClickOnWebElement(goToProfileButton);
+    }
+
+    public void likeFirstImage() {
+        likeButtonOfFirstImage.click();
     }
 }

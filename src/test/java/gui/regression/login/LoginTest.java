@@ -27,16 +27,15 @@ public class LoginTest extends TestBase {
 
         log.info("STEP 3: The user has verified that the LoginPage is open as per requirements ");
         LoginPage loginPage = new LoginPage(super.driver,log);
+        boolean isShownSignInButton = loginPage.isSignInButtonShown();
 
-        log.info("STEP 5: The user has provided a valid username");
+        log.info("STEP 4: The user has provided a valid username");
         loginPage.provideUserName(USERNAME);
 
-        log.info("STEP 6: The user has provided a valid password");
+        log.info("STEP 5: The user has provided a valid password");
         loginPage.providePassword(PASSWORD);
 
-        log.info("STEP 7: The user has clicked on login submit button");
+        log.info("STEP 6: The user has clicked on login submit button");
         loginPage.clickOnLoginSubmitButton();
-
-
     }
 }

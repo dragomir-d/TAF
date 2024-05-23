@@ -1,4 +1,4 @@
-package gui.regression.post;
+package gui.e2e;
 
 import com.skilo.POM.*;
 import gui.base.TestBase;
