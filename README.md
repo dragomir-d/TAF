@@ -58,9 +58,9 @@ To be able to run the project on localhost and run the test automations, the fol
 __NB:__ Prior to running the project and automations make sure your chrome driver executables are properly provided in the project
 
 1. Clone the repo on your computer
-2. Run run_automation.bat.
+2. Run `run_automation.bat`
 
 ### __2.1. How to run UI tests automation individually__
 
-1. Run run_ui_automation.bat file at the root location of the repo
+1. Run `run_ui_automation.bat` file at the root location of the repo
 2. Go to terminal and execute mvn -clean test
