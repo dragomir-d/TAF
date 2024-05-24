@@ -1,11 +1,10 @@
-package gui.regression.registration;
+package gui.tests.registration;
 
 import com.skilo.POM.HomePage;
 import com.skilo.POM.LoginPage;
 import com.skilo.POM.RegistrationPage;
 import gui.base.TestBase;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

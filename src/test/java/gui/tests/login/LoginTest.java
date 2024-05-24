@@ -1,4 +1,4 @@
-package gui.regression.login;
+package gui.tests.login;
 
 import com.skilo.POM.HomePage;
 import com.skilo.POM.LoginPage;

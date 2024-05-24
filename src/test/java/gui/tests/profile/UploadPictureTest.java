@@ -1,21 +1,31 @@
-package gui.regression.profile;
+package gui.tests.profile;
 
-import com.skilo.POM.HomePage;
-import com.skilo.POM.LoginPage;
-import com.skilo.POM.ProfilePage;
+import com.skilo.POM.*;
 import gui.base.TestBase;
-import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-public class UpdateProfileInfoTest extends TestBase {
+import java.io.File;
+
+public class UploadPictureTest extends TestBase {
 
     public static final String LOGIN_PAGE_URL = "http://training.skillo-bg.com:4300/users/login";
+    @DataProvider(name = "PostTestDataProvider")
+    public Object[][] getUsers() {
+        File file = new File("/Users/dmuser/Desktop/TAF/src/test/resources/upload/testUpload.jpg");
 
-    @Test
-    public void verifyUserCanEditProfilePublicInfo() {
-        final String USERNAME = "gandalf";
-        final String PASSWORD = "thegray";
+        return new Object[][]{{
+                "gandalf", "thegray", file},
+        };
+    }
+
+
+    @Test(dataProvider = "PostTestDataProvider")
+    public void verifyUserCanUpdateProfilePicture(
+            String USERNAME,
+            String PASSWORD,
+            File file) {
 
         HomePage homePage = new HomePage(driver, log);
 
@@ -48,18 +58,14 @@ public class UpdateProfileInfoTest extends TestBase {
         ProfilePage profilePage = new ProfilePage(super.driver, log);
         homePage.clickOnProfileButton();
 
-        log.info("STEP 9: Click on edit profile button");
-        profilePage.clickEditProfileButton();
+        log.info("STEP 9: Click on avatar");
+        profilePage.clickAvatar();
 
-        log.info("STEP 10: Add new text to public info");
-        profilePage.provideTextInPublicInfoField("My new public info!");
+        log.info("STEP 10: Change avatar");
+        PostPage postPage = new PostPage(super.driver,log);
+        postPage.uploadPicture(file);
+//      profilePage.uploadPicture(file);
 
-        log.info("STEP 11: Click Save");
-        profilePage.clickSave();
-
-        log.info("STEP 11: Verify the profile is updated");
-        String bodyText = driver.findElement(By.xpath("/html/body/app-root/div[2]/app-profile/div/div[1]/app-profile-section/div/div/div[2]/div/div[5]/p")).getText();
-        Assert.assertTrue(bodyText.contains("My new public info!"), "Text not found!");
     }
 
 }

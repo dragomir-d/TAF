@@ -1,32 +1,15 @@
-package gui.regression.profile;
+package gui.tests.post;
 
 import com.skilo.POM.*;
 import gui.base.TestBase;
-import org.openqa.selenium.By;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import java.io.File;
-
-public class UploadPictureTest extends TestBase {
-
-    public static final String LOGIN_PAGE_URL = "http://training.skillo-bg.com:4300/users/login";
-    @DataProvider(name = "PostTestDataProvider")
-    public Object[][] getUsers() {
-        File file = new File("/Users/dmuser/Desktop/TAF/src/test/resources/upload/testUpload.jpg");
-
-        return new Object[][]{{
-                "gandalf", "thegray", file},
-        };
-    }
-
-
-    @Test(dataProvider = "PostTestDataProvider")
-    public void verifyUserCanUpdateProfilePicture(
-            String USERNAME,
-            String PASSWORD,
-            File file) {
+public class LikePostImageTest extends TestBase {
+    @Test
+    public void verifyUserCanLikeFirstImage() {
+        final String USERNAME = "gandalf";
+        final String PASSWORD = "thegray";
 
         HomePage homePage = new HomePage(driver, log);
 
@@ -55,18 +38,8 @@ public class UploadPictureTest extends TestBase {
         boolean isShownLogOutButton = homePage.isLogOutButtonShown();
         Assert.assertTrue(isShownLogOutButton);
 
-        log.info("STEP 8: Click on profile button");
-        ProfilePage profilePage = new ProfilePage(super.driver, log);
-        homePage.clickOnProfileButton();
-
-        log.info("STEP 9: Click on avatar");
-        profilePage.clickAvatar();
-
-        log.info("STEP 10: Change avatar");
-        PostPage postPage = new PostPage(super.driver,log);
-        postPage.uploadPicture(file);
-//        profilePage.uploadPicture(file);
-
+        log.info("STEP 8: Likes first seen image");
+        homePage.likeFirstImage();
     }
 
 }

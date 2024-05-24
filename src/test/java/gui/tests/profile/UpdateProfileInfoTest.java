@@ -1,13 +1,19 @@
-package gui.regression.post;
+package gui.tests.profile;
 
-import com.skilo.POM.*;
+import com.skilo.POM.HomePage;
+import com.skilo.POM.LoginPage;
+import com.skilo.POM.ProfilePage;
 import gui.base.TestBase;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class LikePostImageTest extends TestBase {
+public class UpdateProfileInfoTest extends TestBase {
+
+    public static final String LOGIN_PAGE_URL = "http://training.skillo-bg.com:4300/users/login";
+
     @Test
-    public void verifyUserCanLikeFirstImage() {
+    public void verifyUserCanEditProfilePublicInfo() {
         final String USERNAME = "gandalf";
         final String PASSWORD = "thegray";
 
@@ -38,8 +44,22 @@ public class LikePostImageTest extends TestBase {
         boolean isShownLogOutButton = homePage.isLogOutButtonShown();
         Assert.assertTrue(isShownLogOutButton);
 
-        log.info("STEP 8: Likes first seen image");
-        homePage.likeFirstImage();
+        log.info("STEP 8: Click on profile button");
+        ProfilePage profilePage = new ProfilePage(super.driver, log);
+        homePage.clickOnProfileButton();
+
+        log.info("STEP 9: Click on edit profile button");
+        profilePage.clickEditProfileButton();
+
+        log.info("STEP 10: Add new text to public info");
+        profilePage.provideTextInPublicInfoField("My new public info!");
+
+        log.info("STEP 11: Click Save");
+        profilePage.clickSave();
+
+        log.info("STEP 11: Verify the profile is updated");
+        String bodyText = driver.findElement(By.xpath("/html/body/app-root/div[2]/app-profile/div/div[1]/app-profile-section/div/div/div[2]/div/div[5]/p")).getText();
+        Assert.assertTrue(bodyText.contains("My new public info!"), "Text not found!");
     }
 
 }

@@ -13,17 +13,17 @@
                     <include name="VerifyUserCanRegisterLoginUpdateProfileAndCretePost"/>
                 </methods>
             </class>
-            <class name="gui.regression.login.LoginTest">
+            <class name="gui.tests.login.LoginTest">
                 <methods>
                     <include name="verifyUserCanNavigateToLoginPageViaNavigationLoginButton"/>
                 </methods>
             </class>
-            <class name="gui.regression.post.DemonstrationTest">
+            <class name="gui.tests.post.DemonstrationTest">
                 <methods>
                     <include name="verifyUserCanCreateNewPost"/>
                 </methods>
             </class>
-            <class name="gui.regression.profile.UploadPictureTest">
+            <class name="gui.tests.profile.UploadPictureTest">
                 <methods>
                     <include name="verifyUserCanUpdateProfilePicture"/>
                 </methods>
