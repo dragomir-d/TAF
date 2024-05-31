@@ -20,7 +20,6 @@ public class UploadPictureTest extends TestBase {
         };
     }
 
-
     @Test(dataProvider = "PostTestDataProvider")
     public void verifyUserCanUpdateProfilePicture(
             String USERNAME,
