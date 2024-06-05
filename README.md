@@ -45,7 +45,7 @@ To be able to run the project on localhost and run the test automations, the fol
 - OPEN JDK 14
 - IntelliJ IDEA Ultimate Edition 2023.1.3 or later
 - MAVEN Command Line
-- Chrome and ChromeDriver on same version - `125.0.6422.113`
+- Chrome and ChromeDriver on same version - `125.0.6422.113` or newer
 - Selenium WebDriver
 - Apache Maven 3.8.0 or later
 
